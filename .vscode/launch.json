@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Backend",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/g-driver",
+      "runtimeExecutable": "${workspaceFolder}/g-driver/node_modules/.bin/babel-node",
+      "runtimeArgs": [
+        "--presets",
+        "@babel/env"
+      ],
+      "program": "${file}",
+      "protocol": "inspector",
+      "env": {
+        "BABEL_ENV": "debug",
+        "SERVER_PORT": "9090",
+        "SERVER_PROTOCOL": "http",
+        "SERVER_HOSTNAME": "localhost",
+        "PG_HOST": "localhost",
+        "PG_PORT": "5432",
+        "DBNAME": "node",
+        "PG_USER": "pipe",
+        "PG_PASSWORD": "pipe",
+        "SPIRAL_HOSTNAME": "localhost",
+        "SPIRAL_PORT": "8000",
+        "APIKEY": "account-service_keyauths_key"
+      }
+    }
+  ],
+  "compounds": []
+}
