@@ -1,0 +1,37 @@
+import { When, Then, setDefaultTimeout } from 'cucumber';
+import superagent from 'superagent';
+import assert from 'assert';
+
+setDefaultTimeout(process.env.CUCUMBER_TEST_ASYNC_TIMEOUT);
+
+When(/^client create a (GET|POST|PUT|DELETE) request to (.+)$/, function(method, path) {
+    const processedPath = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}${path}`;
+    console.log(processedPath);
+    this.request = superagent(method, processedPath);
+});
+
+When(/^send the request$/, function() {
+    return this.request
+        .then((response) => {
+            this.response = response.res;
+        }).catch((error) => {
+            this.response = error.response;
+        });
+});
+
+Then(/^the Driver should respond with a ([1-5]\d{2}) HTTP status code$/, function(statusCode) {
+    assert.equal(this.response.statusCode, statusCode);
+});
+
+Then(/^payload should be a JSON object$/, function() {
+    const contentType = this.response.headers['Content-Type'] || this.response.headers['content-type']
+    if (!contentType || !contentType.includes('application/json')) {
+        throw new AssertionError({ message: 'Response not of content-type application/json' });
+    }
+
+    try {
+        this.responsePayload = JSON.parse(this.response.text);
+      } catch (err) {
+        throw new AssertionError({ message: 'Response not a valid JSON object' });
+    }
+});
