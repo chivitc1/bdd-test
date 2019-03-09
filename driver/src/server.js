@@ -11,7 +11,7 @@ const app = express();
 
 app.use(bodyParser.json({ limit: 1e6 }));
 
-app.all('/hello', helloRouter);
+app.all('/driver/hello', helloRouter);
 
 app.use(function (req, res) {
   res.type('text/plain');
