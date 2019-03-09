@@ -4,11 +4,19 @@ import assert from 'assert';
 
 setDefaultTimeout(process.env.CUCUMBER_TEST_ASYNC_TIMEOUT);
 
-When(/^client create a (GET|POST|PUT|DELETE) request to (.+)$/, function(method, path) {
+When(/^client create a (GET|POST|PUT|DELETE) request to (\/driver\/.+)$/, function(method, path) {
     const processedPath = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}${path}`;
     console.log(processedPath);
     this.request = superagent(method, processedPath);
 });
+
+When(/^client create a (GET|POST|PUT|DELETE) request to (\/api\/.+)$/, function(method, path) {
+    const processedPath = `${process.env.API_PROTOCOL}://${process.env.API_HOSTNAME}:${process.env.API_PORT}${path}`;
+    // console.log(processedPath);
+    this.request = superagent(method, processedPath).set('Content-Type', 'application/json');
+});
+
+
 
 When(/^send the request$/, function() {
     return this.request
@@ -20,6 +28,10 @@ When(/^send the request$/, function() {
 });
 
 Then(/^the Driver should respond with a ([1-5]\d{2}) HTTP status code$/, function(statusCode) {
+    assert.equal(this.response.statusCode, statusCode);
+});
+
+Then(/^the API should respond with a ([1-5]\d{2}) HTTP status code$/, function(statusCode) {
     assert.equal(this.response.statusCode, statusCode);
 });
 

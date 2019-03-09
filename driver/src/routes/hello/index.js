@@ -7,5 +7,5 @@ router.use(function timeLog (req, res, next) {
   next();
 }
 );
-router.get('/hello', helloCtr.sayHello)
+router.get('/driver/hello', helloCtr.sayHello)
 export default router;
