@@ -1,11 +1,9 @@
 {
     "presets": [
         [
-            "@babel/env",
+            "env",
             {
-                "targets": {
-                    "node": "current"
-                }
+                "modules": "commonjs",
             }
         ]
     ],

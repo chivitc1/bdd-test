@@ -30,6 +30,12 @@ $ yarn serve
 If there code changes -> restart the debug process to update code.
 
 ## Test e2e
+- Make sure your driver up
+$ yarn start
+
+- Make sure the testing api up
+Turn on your external testing api (like java, python,... source)
+eg: cd my_java_project/ && docker-compose up -d
 
 - Test all e2e tests
 
