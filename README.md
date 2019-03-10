@@ -2,7 +2,7 @@ BDD tests
 --------------------
 ## Setup
 
-git clone git@gitlab.nal.vn:chinv/gdevtools.git
+git clone https://github.com/chivitc1/bdd-test.git
 
 git checkout bdd/main
 
