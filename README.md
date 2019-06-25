@@ -10,7 +10,9 @@ cd driver/ && yarn install && cd ..
 
 cd bdd/ && yarn install && cd ..
 
-cp envs/.env.examples envs/.env
+mkdir -p bdd/test/reports
+
+cp envs/.env.example envs/.env
 
 `Change .env file as your environment`
 
