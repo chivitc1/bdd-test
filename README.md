@@ -2,6 +2,9 @@ BDD tests
 --------------------
 ## Setup
 
+For MAC OS install realpath: brew install coreutils
+For Linux realpath should already be available
+
 git clone https://github.com/chivitc1/bdd-test.git
 
 git checkout bdd/main
