@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import helloRouter from './routes/hello';
+import emailsRouter from './routes/emails';
 
 const app = express();
 
@@ -12,8 +13,10 @@ const app = express();
 app.use(bodyParser.json({ limit: 1e6 }));
 
 app.all('/driver/hello', helloRouter);
+app.all('/driver/emails/thread', emailsRouter);
 
 app.use(function (req, res) {
+
   res.type('text/plain');
   res.status(404);
   res.send('404 - We do not serve this');
