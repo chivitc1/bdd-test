@@ -1,6 +1,5 @@
 #!/bin/bash
 clear
-#export $(grep -v '^#(.+)$' envs/.env | xargs)
 
 SCRIPT_PATH=$0
 function set_current_working_dir() {
