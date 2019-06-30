@@ -6,7 +6,6 @@ setDefaultTimeout(process.env.CUCUMBER_TEST_ASYNC_TIMEOUT);
 
 When(/^client create a (GET|POST|PUT|DELETE) request to (\/driver\/.+)$/, function(method, path) {
     const processedPath = `${process.env.SERVER_PROTOCOL}://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}${path}`;
-    console.log(processedPath);
     this.request = superagent(method, processedPath);
 });
 

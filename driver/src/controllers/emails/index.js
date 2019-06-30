@@ -1,38 +1,34 @@
-import { createInsertSql} from '../../utils';
+import { createInsertSql as generateInsertSql } from '../../utils';
+import { initDbConn } from '../../infrastructure';
 
-const pgp = require('pg-promise')();
-var emails = require('./emails.json');
-const connection = {
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-}
-const db = pgp(connection);
+const db = initDbConn();
 
+const createEmails = (req, res) => {
+  const emails = req.body.emails;
+  const createEmailSql = generateInsertSql(emails, "emails");
 
-const createEmailSql = createInsertSql(emails, "emails");
-console.log(createEmailSql);
-
-const createEmailThread = (req, res) => {
   db.tx(t => {
     return t.batch([
       db.none(createEmailSql)
         .then(() => {
-          console.log("Email seeded");
           res.status(200)
-            .json({ "message": "Email seeded" });
+            .json({ "message": "OK" });
         })
     ])
   })
     .catch(error => {
       console.log('ERROR:', error);
       res.status(400)
-        .json({ "message": "error" });
+        .json({ "message": error });
     });
 }
 
-export default { createEmailThread };
+const getEmail = (req, res) => {
+  const emailId = req.params.emailId;
+  return db.one('SELECT * FROM emails WHERE id = $1', emailId)
+    .then(email => res.json(email))
+    .catch(error => res.status(500).json({"message": error}));
+}
+export default { createEmailThread: createEmails, getEmail };
 
 

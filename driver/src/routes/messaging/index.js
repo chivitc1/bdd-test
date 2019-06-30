@@ -1,5 +1,5 @@
 import Router from 'express';
-import emailCtr from '../../controllers/emails';
+import messagingCtr from '../../controllers/messaging';
 
 var router = Router();
 router.use(function timeLog (req, res, next) {
@@ -7,6 +7,5 @@ router.use(function timeLog (req, res, next) {
   next();
 }
 );
-router.post('/driver/emails/thread', emailCtr.createEmailThread)
-router.get('/driver/emails/:emailId',emailCtr.getEmail)
+router.post('/driver/messaging', messagingCtr.publishMessageToChannel)
 export default router;
