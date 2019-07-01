@@ -1,7 +1,5 @@
 import { createInsertSql as generateInsertSql } from '../../utils';
-import { initDbConn } from '../../infrastructure';
-
-const db = initDbConn();
+import { dbClient } from '../../infrastructure';
 
 const seed = (req, res) => {
   const tables = req.body;
@@ -13,9 +11,9 @@ const seed = (req, res) => {
   });
   // console.log(batchSql);
 
-  db.tx(t => {
+  dbClient.tx(t => {
     return t.batch([
-      db.none(batchSql)
+      dbClient.none(batchSql)
         .then(() => {
           res.status(200)
             .json({ "message": "OK" });

@@ -1,17 +1,14 @@
 import { prettyJson } from '../utils';
 
-const initDbConn = () => {
-  const pgp = require('pg-promise')();
-  const connection = {
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASS,
-    port: process.env.DB_PORT,
-  };
-  const db = pgp(connection);
-  return db;
-}
+const pgp = require('pg-promise')();
+const connection = {
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: process.env.DB_PORT,
+};
+const dbClient = pgp(connection);
 
 const logHttpRequest = (req, res, next) => {
   console.log("------------------------------")
@@ -28,4 +25,4 @@ const handleNoRoute = (req, res) => {
     .send('404 - We do not serve this');
 }
 
-export { initDbConn, logHttpRequest, handleNoRoute };
+export { dbClient, logHttpRequest, handleNoRoute };
