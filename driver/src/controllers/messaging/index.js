@@ -6,8 +6,8 @@ const publishMessageToChannel = (req, res) => {
         const Producer = kafka.Producer;
         const client = new kafka.KafkaClient(process.env.KAFKA_SERVER);
         const producer = new Producer(client);
-        console.log(req.body.message);
-        console.log(req.body.channel);
+        // console.log(req.body.message);
+        // console.log(req.body.channel);
         let payloads = [
             {
                 topic: req.body.channel,
@@ -34,5 +34,3 @@ const publishMessageToChannel = (req, res) => {
 }
 
 export default { publishMessageToChannel };
-
-

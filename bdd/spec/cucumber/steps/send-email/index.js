@@ -3,16 +3,19 @@ import driver from '../../../../driver';
 import chai from 'chai';
 
 Given('Have a replying email in an email thread', function(cb){
-    const emails = require('../../features/send-email/emails.json');
-    driver.post('/driver/emails/thread', {"emails": emails})
+    const seed_data = require('../../features/send-email/emails.json');
+    console.log(seed_data)
+
+    driver.post('/driver/db/seed', seed_data)
     .then((response) => {       
         if(response.status == 200) {
-            this.replyingEmailId = emails[1].id;
+            this.replyingEmailId = seed_data.emails[1].id;
             cb();
         } else {
             cb(response.text)
         }
-    });
+    })
+    .catch(error => cb(error));;
 })
 When('Channel mail.postprocessed has a sending email request', function(cb) {
     driver.post('/driver/messaging', {"channel": "mail.postprocessed", "message": {"mailSourceId": this.replyingEmailId}})
@@ -22,7 +25,8 @@ When('Channel mail.postprocessed has a sending email request', function(cb) {
         } else {
             cb(response.text)
         }
-    }).catch(error => { cb(error.response.text);});
+    })
+    .catch(error => cb(error.response.text));
 })
 
 When('When I get the replying email', function(cb) {
@@ -35,7 +39,7 @@ When('When I get the replying email', function(cb) {
         } else {
             cb(response.text)
         }
-    }).catch(error => { cb(error.response);});
+    }).catch(error => { cb(error.response.text);});
 })
 Then('The replying email message_id should have been set', function(cb) {
     chai.assert.isNotNull(this.replyingEmail.message_id, 'The replying email\'s message_id should be set');

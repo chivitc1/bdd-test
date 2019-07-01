@@ -4,11 +4,7 @@ import chai from 'chai';
 
 Given('Having Teams, folders, mail_servers, mail_accounts, mailing_list for kwmcjp1@gmail.com', function(cb){
     const seed_data = require('../../features/email/fetch-precondition.json');
-    driver.post('/driver/db/seed', [{"teams": seed_data.teams}, 
-        {"folders": seed_data.folders}, 
-        {"mail_servers": seed_data.mail_servers}, 
-        {"mail_accounts": seed_data.mail_accounts}, 
-        {"mailing_list": seed_data.mailing_list}])
+    driver.post('/driver/db/seed', seed_data)
     .then((response) => {       
         if(response.status == 200) {
             this.mail_list = seed_data.mail_accounts.mail_account_email;

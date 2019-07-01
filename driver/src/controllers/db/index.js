@@ -6,10 +6,9 @@ const db = initDbConn();
 const seed = (req, res) => {
   const tables = req.body;
   let batchSql = '';
-  Object.keys(tables).forEach(key => {
-    const table = tables[key];
-    const tableName = getFirstKey(table);
-    const insertSql = generateInsertSql(getRows(table, tableName), tableName);
+  Object.keys(tables).forEach(tableName => {
+    const table = tables[tableName];
+    const insertSql = generateInsertSql(table, tableName);
     batchSql += '\n' + insertSql;
   });
   // console.log(batchSql);
@@ -31,13 +30,3 @@ const seed = (req, res) => {
 }
 
 export default { seed };
-
-
-function getRows(table, tableName) {
-  return table[tableName];
-}
-
-function getFirstKey(table) {
-  return Object.keys(table)[0];
-}
-

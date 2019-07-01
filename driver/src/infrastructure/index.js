@@ -1,3 +1,5 @@
+import { prettyJson } from '../utils';
+
 const initDbConn = () => {
   const pgp = require('pg-promise')();
   const connection = {
@@ -15,7 +17,7 @@ const logHttpRequest = (req, res, next) => {
   console.log("------------------------------")
   console.log(`${new Date().toISOString()}, ${req.method} : ${req.url}`);
   if (req.method == 'POST' || req.method == 'PUT')
-    console.log(req.body);
+    console.log(prettyJson(req.body));
   console.log("------------------------------")
   next();
 }
@@ -25,4 +27,5 @@ const handleNoRoute = (req, res) => {
     .status(404)
     .send('404 - We do not serve this');
 }
+
 export { initDbConn, logHttpRequest, handleNoRoute };
