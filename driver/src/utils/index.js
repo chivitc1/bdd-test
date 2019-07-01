@@ -5,11 +5,12 @@ import { isNumber, isBoolean } from 'util';
  * @param { string } tableName 
  */
 function createInsertSql(items, tableName) {
+    // console.log(items);
     const fields = Object.keys(items[0]).join(",");
     const values = items.reduce((result, currentItem, currentIndex) => result + '(' + toCommaSepList(currentItem) +
       (currentIndex == items.length - 1 ? ')\n' : '),\n'), '');
     return `
-  DELETE FROM ${tableName};
+  TRUNCATE TABLE ${tableName} CASCADE;
   ALTER SEQUENCE seq_${tableName}_id RESTART WITH 1;
   INSERT INTO ${tableName} 
     (${fields})
