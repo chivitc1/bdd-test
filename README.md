@@ -5,19 +5,17 @@ BDD tests
 For MAC OS install realpath: brew install coreutils
 For Linux realpath should already be available
 
-git clone  https://114.185.31.150.static.iijgio.jp/gitlab/nal/kwmc_frontend.git
+- Chekout source code:
+
+git clone  git@github.com:chivitc1/bdd-test.git
 
 git checkout autotest/main
 
-cd driver/ && yarn install && cd ..
+- Install node js dependencies:
 
-cd bdd-backend/ && yarn install && cd ..
+yarn install
 
-mkdir -p bdd-backend/test/reports
-
-cd bdd-frontend/ && yarn install && cd ..
-
-mkdir -p bdd-frontend/test/reports
+- Set environment variables:
 
 cp envs/.env.example envs/.env
 
