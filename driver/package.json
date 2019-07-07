@@ -1,37 +1,21 @@
 {
-  "name": "g-driver",
+  "name": "driver",
   "version": "1.0.0",
-  "description": "Driver to access Spiral api",
-  "main": "src/server.js",
-  "scripts": {
-    "build": "webpack --env production --config webpack.config.prod.js",
-    "start": "nodemon  --exec babel-node src/server.js",
-    "serve": "yarn build && node build/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.nal.vn:chinv/gdevtools.git"
-  },
-  "keywords": [
-    "bdd",
-    "node js",
-    "cucumber"
-  ],
+  "main": "main.js",
   "author": "chinv",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "7",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-preset-env": "^1.7.0",
-    "html-webpack-plugin": "^3.2.0",
-    "nodemon": "^1.18.10",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "nodemon": "^1.19.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "nodemon  --exec babel-node src/main.js"
   }
 }

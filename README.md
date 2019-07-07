@@ -1,38 +1,27 @@
 BDD tests
 --------------------
-
-## On Mac OS please install realpath
-
-$ brew install coreutils
-
 ## Setup
 
-git clone https://github.com/chivitc1/bdd-test.git
+For MAC OS install realpath: brew install coreutils
+For Linux realpath should already be available
 
-git checkout bdd/main
+git clone  https://114.185.31.150.static.iijgio.jp/gitlab/nal/kwmc_frontend.git
+
+git checkout autotest/main
 
 cd driver/ && yarn install && cd ..
 
-cd bdd/ && yarn install && cd ..
+cd bdd-backend/ && yarn install && cd ..
 
-cp envs/.env.examples envs/.env
+mkdir -p bdd-backend/test/reports
+
+cd bdd-frontend/ && yarn install && cd ..
+
+mkdir -p bdd-frontend/test/reports
+
+cp envs/.env.example envs/.env
 
 `Change .env file as your environment`
-
-## Start Driver
-$ cd driver
-
-$ yarn start
-
-or 
-
-$ yarn serve
-
-## To debug with VSCode:
-- active server.js
-- Press F5
-
-If there code changes -> restart the debug process to update code.
 
 ## Test e2e
 - Make sure your driver up
@@ -48,8 +37,8 @@ $ yarn test
 
 - Test a feature file
 
-$ yarn run test spec/cucumber/features/helloworld/test.feature
+$ yarn run test features/helloworld/test.feature
 
 - Test one scenario by specify feature file and line number
 
-$ yarn run test spec/cucumber/features/helloworld/test.feature 2
+$ yarn run test features/helloworld/test.feature 2

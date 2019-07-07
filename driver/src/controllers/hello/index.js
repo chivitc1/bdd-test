@@ -4,4 +4,12 @@ const sayHello = (req, res) => {
       .json({"message": "Hello World"});
 };
 
-export default { sayHello };
+const updateHello = (req, res) => {
+  const payload = req.body;
+
+  res.status(200)
+    .contentType('application/json')
+    .json(payload);
+};
+
+export default { sayHello, updateHello };

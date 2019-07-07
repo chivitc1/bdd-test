@@ -1,23 +1,22 @@
-// import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import helloRouter from './routes/hello';
+import { logHttpRequest, handleNoRoute } from './lib';
 
 const app = express();
 
 /**
  * Middleware handlers
  */
-
 app.use(bodyParser.json({ limit: 1e6 }));
+app.use(logHttpRequest);
 
+/**
+ * Routing to routers
+ */
 app.all('/driver/hello', helloRouter);
 
-app.use(function (req, res) {
-  res.type('text/plain');
-  res.status(404);
-  res.send('404 - We do not serve this');
-});
+app.use(handleNoRoute);
 
 const port = process.env.SERVER_PORT || 3000;
 app.listen(port, () => {

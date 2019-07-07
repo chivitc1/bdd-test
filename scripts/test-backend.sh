@@ -7,7 +7,7 @@ function set_current_working_dir() {
   cd "$(dirname "$(realpath $SCRIPT_PATH)")/../$1";
   pwd
 }
-set_current_working_dir "bdd"
+set_current_working_dir "bdd-backend"
 
 # e2e test optional params
 optFeatureFile=$1
@@ -17,7 +17,7 @@ cucumberSpec="$optFeatureFile:$optLineNumParam"
 function check_optional_params() {
   # No params => default test all features
   if [ -z $optFeatureFile ]; then
-    cucumberSpec="spec/cucumber/features"
+    cucumberSpec="features"
   else
     # No Second param => test all scenarios in the feature file
     if [ -z $optLineNumParam ]; then
@@ -28,4 +28,4 @@ function check_optional_params() {
 
 check_optional_params
 echo "Spec: $cucumberSpec"
-npx cucumber-js -f json:test/reports/cucumber_report.json --require-module @babel/register --require spec/cucumber/steps $cucumberSpec
+npx cucumber-js -f json:test/reports/cucumber_report.json --require-module @babel/register --require steps/ $cucumberSpec

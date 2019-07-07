@@ -1,12 +1,5 @@
 {
-    "presets": [
-        [
-            "env",
-            {
-                "modules": "commonjs",
-            }
-        ]
-    ],
+    "presets": ["@babel/preset-env"],
     "env": {
         "debug": {
             "retainLines": true
