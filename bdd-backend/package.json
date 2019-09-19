@@ -1,0 +1,29 @@
+{
+  "name": "bdd-backend",
+  "version": "1.0.0",
+  "description": "BDD test e2e with Ghirkin and Cucumber",
+  "main": "index.js",
+  "scripts": {
+    "test": "babel --version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chivitc1/bdd-test.git"
+  },
+  "keywords": [
+    "cucumber",
+    "bdd"
+  ],
+  "author": "chinv",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.6.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.5.0",
+    "chai": "^4.2.0",
+    "cucumber": "^5.1.0",
+    "superagent": "^4.1.0"
+  },
+  "dependencies": {}
+}

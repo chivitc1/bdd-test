@@ -1,4 +1,8 @@
-
+/**
+ * @author chinv
+ * Handle requests related kafka operation.
+ * Note: currently not work with Kafka server running in docker container as hostname and routing problem.
+ */
 const kafka = require('kafka-node');
 
 const publishMessageToChannel = (req, res) => {

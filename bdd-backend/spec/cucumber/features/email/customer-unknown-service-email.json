@@ -1,0 +1,18 @@
+{    
+    "mailAccount": {
+        "host": "smtp.gmail.com",
+        "port": "587",
+        "secure": false,
+        "user": "testkwmc1@gmail.com",
+        "password": "a@123456"
+    },
+    "mailMessage": {
+        "from": "testkwmc1@gmail.com",
+        "to": "kwmcjp4@gmail.com",
+        "cc": "",
+        "bcc": "",
+        "subject": "[UNKNOWN SERVICE] A Subject",
+        "content": "Hi kwmcjp4, this is a test unknown service pre-process"
+    }
+}
+

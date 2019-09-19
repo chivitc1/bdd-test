@@ -5,8 +5,8 @@
       "name": "Debug Backend",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/g-driver",
-      "runtimeExecutable": "${workspaceFolder}/g-driver/node_modules/.bin/babel-node",
+      "cwd": "${workspaceFolder}/driver",
+      "runtimeExecutable": "${workspaceFolder}/driver/node_modules/.bin/babel-node",
       "runtimeArgs": [
         "--presets",
         "@babel/env"

@@ -1,3 +1,8 @@
+/**
+ * @author chinv
+ * Util functions
+ */
+
 import { isNumber, isBoolean } from 'util';
 
 /**
@@ -53,4 +58,6 @@ const prettyJson = (json) => {
     }
   );
 }
-export { createInsertSql, prettyJson };
+const sleep = (waitTimeInMs) => { return new Promise(resolve => setTimeout(resolve, waitTimeInMs)) }
+
+export { createInsertSql, prettyJson, sleep };

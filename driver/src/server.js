@@ -1,9 +1,15 @@
+/**
+ * @author chinv
+ * NodeJS express entry point
+ */
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import helloRouter from './routes/hello';
 import emailsRouter from './routes/emails';
 import messagingRouter from './routes/messaging';
 import dbSeedRouter from './routes/db';
+import sendmailRouter from './routes/sendmail';
 import { logHttpRequest, handleNoRoute } from './infrastructure';
 
 const app = express();
@@ -20,7 +26,9 @@ app.use(logHttpRequest);
 app.all('/driver/hello', helloRouter);
 app.all('/driver/messaging', messagingRouter);
 app.all('/driver/emails/:emailId', emailsRouter);
+app.all('/driver/checkReceivingEmail', emailsRouter);
 app.all('/driver/db/seed', dbSeedRouter);
+app.post('/driver/sendmail', sendmailRouter);
 
 app.use(handleNoRoute);
 

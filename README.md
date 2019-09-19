@@ -11,28 +11,16 @@ git checkout bdd/main
 
 cd driver/ && yarn install && cd ..
 
-cd bdd/ && yarn install && cd ..
+cd bdd-backend/ && yarn install && cd ..
 
-mkdir -p bdd/test/reports
+mkdir -p bdd-backend/test/reports
 
 cp envs/.env.example envs/.env
 
 `Change .env file as your environment`
 
-## Start Driver
-$ cd driver
-
+## Start Driver api server
 $ yarn start
-
-or 
-
-$ yarn serve
-
-## To debug with VSCode:
-- active server.js
-- Press F5
-
-If there code changes -> restart the debug process to update code.
 
 ## Test e2e
 - Make sure your driver up
@@ -44,12 +32,12 @@ eg: cd my_java_project/ && docker-compose up -d
 
 - Test all e2e tests
 
-$ yarn test
+$ yarn test:backend
 
 - Test a feature file
 
-$ yarn run test spec/cucumber/features/helloworld/test.feature
+$ yarn run test:backend spec/cucumber/features/helloworld/test.feature
 
 - Test one scenario by specify feature file and line number
 
-$ yarn run test spec/cucumber/features/helloworld/test.feature 2
+$ yarn run test:backend spec/cucumber/features/helloworld/test.feature 2

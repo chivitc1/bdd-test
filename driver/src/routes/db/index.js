@@ -1,3 +1,6 @@
+/**
+ * @author chinv
+ */
 import Router from 'express';
 import dbCtr from '../../controllers/db';
 

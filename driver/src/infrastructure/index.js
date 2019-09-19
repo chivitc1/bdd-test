@@ -1,3 +1,9 @@
+/**
+ * @author chinv
+ * Common function depends directly on 3rd party lib: postgresql promise, nodemailer, 
+ * and util functions
+ */
+
 import { prettyJson } from '../utils';
 
 const pgp = require('pg-promise')();
@@ -25,4 +31,36 @@ const handleNoRoute = (req, res) => {
     .send('404 - We do not serve this');
 }
 
-export { dbClient, logHttpRequest, handleNoRoute };
+const nodemailer = require("nodemailer");
+
+const sendMail = function (mailAccount, mailMessage) {
+  const mailTransporter = nodemailer.createTransport({
+    host: mailAccount.host,//"smtp.gmail.com"
+    secure: mailAccount.secure,//true
+    port: mailAccount.port,//465,587
+    auth: {
+      user: mailAccount.user,
+      pass: mailAccount.password
+    }, tls: {
+      rejectUnauthorized: false
+    }
+  });
+  return new Promise(function (resolve, reject) {
+    mailTransporter.sendMail({
+      from: mailMessage.from, // sender address
+      to: mailMessage.to, // list of receivers
+      subject: mailMessage.subject,
+      text: mailMessage.content, // plain text body
+      html: mailMessage.htmlContent
+    }, (error, info) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(info.messageId);
+        // console.log(info.messageId)
+      }
+    });
+  });
+}
+
+export { dbClient, logHttpRequest, handleNoRoute, sendMail };

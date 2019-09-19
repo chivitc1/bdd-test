@@ -1,0 +1,226 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "role_id": 1,
+            "username": "member1",
+            "email": "member1@example.com"
+        },
+        {
+            "id": 2,
+            "role_id": 1,
+            "username": "leader1",
+            "email": "leader1@example.com"
+        },
+        {
+            "id": 3,
+            "role_id": 1,
+            "username": "admin1",
+            "email": "admin1@example.com"
+        },
+        {
+            "id": 4,
+            "role_id": 1,
+            "username": "member2",
+            "email": "member2@example.com"
+        }
+    ],
+    "credentials": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "password": "$2a$10$HHXwKNtUH1J7HH8CbhgQtuwdhGxjv94sY68ORlJip7ncBq6IzPShi"
+        },
+        {
+            "id": 2,
+            "user_id": 2,
+            "password": "$2a$10$HHXwKNtUH1J7HH8CbhgQtuwdhGxjv94sY68ORlJip7ncBq6IzPShi"
+        },
+        {
+            "id": 3,
+            "user_id": 3,
+            "password": "$2a$10$HHXwKNtUH1J7HH8CbhgQtuwdhGxjv94sY68ORlJip7ncBq6IzPShi"
+        }
+    ],
+    "teams": [
+        {
+            "id": 1,
+            "name": "Team A",
+            "description": "Team A",
+            "created_by": 1,
+            "updated_by": 1
+        }
+    ],
+    "team_users": [
+        {
+            "id": 1,
+            "team_id": 1,
+            "user_id": 1,
+            "role": "MEMBER"
+        },
+        {
+            "id": 2,
+            "team_id": 1,
+            "user_id": 2,
+            "role": "LEADER"
+        },
+        {
+            "id": 3,
+            "team_id": 1,
+            "user_id": 3,
+            "role": "ADMIN"
+        },
+        {
+            "id": 4,
+            "team_id": 1,
+            "user_id": 4,
+            "role": "MEMBER"
+        }
+    ],
+    "folders": [
+        {
+            "id": 1,
+            "team_id": 1,
+            "folder_name": "Team A",
+            "parent_id": null,
+            "folder_order": 1,
+            "type": "TEAM"
+        },
+        {
+            "id": 3,
+            "team_id": 1,
+            "folder_name": "Mail List1",
+            "parent_id": 1,
+            "folder_order": 2,
+            "type": "MAILING_LIST"
+        },
+        {
+            "id": 4,
+            "team_id": 1,
+            "folder_name": "Uncategoried",
+            "parent_id": 3,
+            "folder_order": 3,
+            "type": "UNCATEGORIZED"
+        },
+        {
+            "id": 5,
+            "team_id": 1,
+            "folder_name": "Service1",
+            "parent_id": 3,
+            "folder_order": 4,
+            "type": "SERVICE"
+        },
+        {
+            "id": 6,
+            "team_id": 1,
+            "folder_name": "UnProcess",
+            "parent_id": 5,
+            "folder_order": 1,
+            "type": "UNPROCESSED"
+        },
+        {
+            "id": 7,
+            "team_id": 1,
+            "folder_name": "Processing",
+            "parent_id": 5,
+            "folder_order": 2,
+            "type": "PROCESSING"
+        },
+        {
+            "id": 8,
+            "team_id": 1,
+            "folder_name": "Processed",
+            "parent_id": 5,
+            "folder_order": 3,
+            "type": "PROCESSED"
+        },
+        {
+            "id": 9,
+            "team_id": 1,
+            "folder_name": "Closed",
+            "parent_id": 5,
+            "folder_order": 4,
+            "type": "CLOSED"
+        }
+    ],
+    "mail_servers": [
+        {
+            "id": 1,
+            "in_type": "1",
+            "in_name": "imap.gmail.com",
+            "in_port": 993,
+            "in_encrypt": true,
+            "in_encrypt_type": "1",
+            "in_apop": true,
+            "in_size": 1,
+            "out_name": "smtp.gmail.com",
+            "out_port": 587,
+            "out_encrypt": true,
+            "out_encrypt_type": "1",
+            "out_smtp": true,
+            "out_smtp_type": "1",
+            "out_size": 1,
+            "out_transmission_per_minute": 1
+        }
+    ],
+    "mailing_list": [
+        {
+            "id": 1,
+            "name": "Mail-List-1",
+            "status_deleted": false,
+            "team_id": 1,
+            "default_folder_id": 4
+        }
+    ],
+    "mail_accounts": [
+        {
+            "id": 1,
+            "email": "kwmcjp4@gmail.com",
+            "password": "a@123456",
+            "mail_server_id": 1,
+            "mailing_list_id": 1
+        }
+    ],
+    "emails": [
+        {
+            "id": 1,
+            "message_id": "<CAOwtKn2iJAHgT2FA8OEcu2dumD0D0GGEC=pkehiMHksC+cEz8w@mail.gmail.com>",
+            "path": "",
+            "references_mail": "",
+            "reply_to_id": null,
+            "mail_from": "testkwmc1@gmail.com",
+            "mail_to": "kwmcjp4@gmail.com",
+            "mail_cc": "",
+            "mail_bcc": "",
+            "mail_subject": "A Subject",
+            "mail_content": "Some content",
+            "checker_id": null,
+            "priority": "NORMAL",
+            "folder_id": 6,
+            "assignee_id": 1,
+            "process_status": "PROCESSING",
+            "is_read": true,
+            "email_type": "RECEIVING_MAIL"
+        },
+        {
+            "id": 2,
+            "message_id": null,
+            "path": "1",
+            "references_mail": null,
+            "reply_to_id": 1,
+            "mail_from": "kwmcjp4@gmail.com",
+            "mail_to": "testkwmc1@gmail.com",
+            "mail_cc": "",
+            "mail_bcc": "",
+            "mail_subject": "A subject",
+            "mail_content": "Reply to Some content",
+            "checker_id": 2,
+            "priority": "NORMAL",
+            "folder_id": 7,
+            "assignee_id": 1,
+            "process_status": "CHECKED",
+            "isRead": null,
+            "email_type": "REPLY_MAIL"
+        }
+    ]
+}

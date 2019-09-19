@@ -1,24 +1,23 @@
 {
-  "name": "gdevtools",
+  "name": "autotest",
   "version": "1.0.0",
-  "description": "test spiral using bdd cucumber node js adapter to spiral api",
+  "description": "auto test bdd cucumber node js",
   "main": "index.js",
   "scripts": {
     "start": "./scripts/driver-start.sh",
-    "test": "./scripts/test-e2e.sh",
-    "report": "./scripts/report.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.nal.vn:chinv/gdevtools.git"
+    "test:backend": "./scripts/bdd-backend.sh",
+    "report:backend": "babel-node report-backend.js"
   },
   "keywords": [
-    "spiral",
     "cucumber",
     "bdd"
   ],
   "author": "chinv",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "cucumber-html-reporter": "^5.0.2"
+  },
   "dependencies": {}
 }
